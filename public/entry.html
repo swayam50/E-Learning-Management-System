@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="http://localhost:5000/public/css/entry.css">
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+
+    <title>Login / Register</title>
+</head>
+
+<body>
+
+
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form id="register-form" action="/register">
+                <h1>Create Account</h1>
+                <div class="social-container">
+                    <div class="social" id="register-teacher"><box-icon name='chalkboard'></box-icon> <h5>&nbsp;Teacher</h5> </div>
+                    <div class="social" id="register-student"><box-icon name='graduation' type='solid' ></box-icon> <h5>&nbsp;Student</h5> </div>
+                </div>
+                <span id="register-msg"><!--enter details--></span>
+                <input id="register-regno" type="text" placeholder="University ID" name="regno" autocomplete="off" />
+                <input id="register-email" type="email" placeholder="Email" name="email" autocomplete="off" />
+                <input id="register-password" type="password" placeholder="Password" name="password" autocomplete="off" />
+                <select id="register-branch" name="branch">
+                    <option value="" disabled selected>Branch</option>
+                    <option value="CSIT">CSIT</option>
+                    <option value="CSE">CSE</option>
+                    <option value="ECE">ECE</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="Civil">Civil</option>
+                    <option value="Other">Other</option>
+                </select>
+                <button type="submit" id="register-btn">Register</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form id="login-form" action="/login">
+                <h1>Sign in</h1>
+                <div class="social-container">
+                    <div class="social" id="login-teacher"><box-icon name='chalkboard'></box-icon> <h5>&nbsp;Teacher</h5> </div>
+                    <div class="social" id="login-student"><box-icon name='graduation' type='solid' ></box-icon> <h5>&nbsp;Student</h5> </div>
+                </div>
+                <span id="login-msg"><!--enter details--></span>
+                <input id="login-email" type="email" placeholder="Email" name="email" autocomplete="off" />
+                <input id="login-password" type="password" placeholder="Password" name="password" autocomplete="off" />
+                <a href="#">Forgot your password?</a>
+                <button type="submit" id="login-btn">Login</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn-btn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="ghost" id="signUp-btn">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>
+            Back to homepage <a href="http://localhost:5000">Educa</a>.
+        </p>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous" defer></script>
+    <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js" defer></script>
+    <script src="http://localhost:5000/public/js/entry.js" defer></script>
+</body>
+
+</html>

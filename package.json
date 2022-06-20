@@ -1,0 +1,38 @@
+{
+  "name": "e-learning-management-system",
+  "version": "1.0.0",
+  "description": "A E-Learning Management System Web App.",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swayam50/E-Learning-Management-System.git"
+  },
+  "keywords": [
+    "e-learning",
+    "full-stack",
+    "nodejs",
+    "expressjs"
+  ],
+  "author": "Swayamsidh Nayak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/swayam50/E-Learning-Management-System/issues"
+  },
+  "homepage": "https://github.com/swayam50/E-Learning-Management-System#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "mongoose": "^6.4.0",
+    "mysql2": "^2.3.3"
+  }
+}
