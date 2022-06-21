@@ -1,9 +1,14 @@
 const path = require('path');
 
-exports.login = (req, res) => {
+const login = (req, res) => {
     res.send("login");
 }
 
-exports.register = (req, res) => {
+const register = (req, res) => {
     res.send("register");
 }
+
+module.exports = {
+    login,
+    register
+};
