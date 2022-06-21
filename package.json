@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "update-git-repo": "autogit.sh"
+    "git-update": "autogit.sh"
   },
   "repository": {
     "type": "git",
