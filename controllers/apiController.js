@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const config = require('./../configs/config');
 const User = require('./../models/mongodb/User');
 
-mongoose.connect('mongodb://localhost:27017/e-learning-db', err => {
+mongoose.connect(config.MONGO_URI, err => {
     if(err) console.log(err);
     console.log('Connected to MongoDB');
 })
