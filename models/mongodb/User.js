@@ -4,11 +4,11 @@ const UserSchema = new mongoose.Schema(
     {
         name: { type: String, required: true },
         email: { type: String, required: true, unique: true },
+        password: { type: String, required: true },
         regno: { type: String, required: true, unique: true },
         branch: { type: String },
         college: { type: String },
-        designation: { type: String },
-        password: { type: String, required: true },
+        designation: { type: String, required: true },
         img: { data: Buffer, contentType: String }
     },
     {

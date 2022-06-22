@@ -56,8 +56,8 @@ async function loginUser(event) {
 	event.preventDefault();
 
 	try {
-		let userData = await checkLoginData($('#login-email').val(), $('#login-password').val());
-		console.log(userData);
+		let userData = await validateLoginData($('#login-email').val(), $('#login-password').val());		
+		
 		$('#login-msg').css("color", "green").text('login successful');
 	} catch(err) {
 		$('#login-msg').css("color", "red").text(err);
@@ -65,7 +65,7 @@ async function loginUser(event) {
 	}
 }
 
-function checkLoginData(email, password) {
+function validateLoginData(email, password) {
 	return new Promise((resolve, reject) => {
 
 		if(!loginTeacherActive && !loginStudentActive)	reject('Please select designation');
@@ -84,23 +84,34 @@ async function registerUser(event) {
 	event.preventDefault();
 
 	try {
-		let userData = await checkRegisterData($('#register-regno').val(), $('#register-email').val(), $('#register-password').val(), $('#register-branch').val());
-		console.log(userData);
+		let userData = await validateRegisterData($('#register-regno').val(), $('#register-email').val(), $('#register-password').val(), $('#register-branch').val());
+		let response = await fetch('/api/register', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(userData)
+		});
+		let parsedResponse = await response.json();
+		
+		if(!response.ok)
+			throw new Error(parsedResponse.error);
+		
 		$('#register-msg').css("color", "green").text('registration successful, kindly login');
 	} catch (err) {
-		$('#register-msg').css("color", "red").text(err);
+		$('#register-msg').css("color", "red").text(err.message);
 		console.log(err);
 	}
 }
 
-function checkRegisterData(regno, email, password, branch) {
+function validateRegisterData(regno, email, password, branch) {
 	
 	return new Promise((resolve, reject) => {
-		if(!registerTeacherActive && !registerStudentActive)	reject('Please select designation');
-		if(!regno.length)		reject('Please provide university id');
-		if(!email.length)		reject('Please provide email');
-		if(!password.length)	reject('Please enter password');
-		if(!branch)		reject('Please provide branch');
+		if(!registerTeacherActive && !registerStudentActive)	reject(new Error('please select designation'));
+		if(!regno.length)		reject(new Error('please provide university id'));
+		if(!email.length)		reject(new Error('please provide email'));
+		if(!password.length)	reject(new Error('please enter password'));
+		if(!branch)		reject(new Error('please provide branch'));
 
 		resolve({
 			regno,
