@@ -1,21 +1,27 @@
 const mongoose = require('mongoose');
+const uuid = require('uuid');
+const imageSchema = require('./Image').imageSchema;
 
-const UserSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
     {
-        name: { type: String, required: true },
+        username: { type: String, required: true, unique: true, default: `user-${uuid.v4()}` },
+        name: { type: String, required: true, default: 'User' },
         email: { type: String, required: true, unique: true },
         password: { type: String, required: true },
         regno: { type: String, required: true, unique: true },
         branch: { type: String },
-        college: { type: String },
+        college: { type: String, default: 'C. V. Raman College of Engineering' },
         designation: { type: String, required: true },
-        img: { data: Buffer, contentType: String }
+        img: imageSchema
     },
     {
         collection: 'users'
     }
 );
 
-const model = mongoose.model('UserSchema', UserSchema);
+const model = mongoose.model('UserSchema', userSchema);
 
-module.exports = model;
+module.exports = {
+    userSchema,
+    model
+};

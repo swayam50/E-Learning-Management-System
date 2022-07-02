@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const config = require('./../configs/config');
-const User = require('./../models/mongodb/User');
+const Image = require('./../models/mongodb/Image').model;
+const User = require('./../models/mongodb/User').model;
 
 mongoose.connect(config.MONGO_URI, err => {
     if(err) console.log(err);
@@ -17,12 +18,10 @@ const register = async (req, res) => {
         const hashedPassword = await bcrypt.hash(plaintextPassword, 10);
 
         const dbResponse = await User.create({
-            name: "User",
             email,
             password: hashedPassword,
             regno,
             branch,
-            college: "C. V. Raman College of Engineering",
             designation
         });
 
